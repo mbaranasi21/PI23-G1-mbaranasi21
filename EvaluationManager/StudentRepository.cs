@@ -34,6 +34,7 @@ namespace EvaluationManager {
             DB.CloseConnection();
             return student;
         }
+
         public static List<Student> GetStudents() {
             List<Student> students = new List<Student>();
             string sql = "SELECT * FROM Students";
