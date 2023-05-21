@@ -54,6 +54,7 @@
     <Compile Include="Activity.cs" />
     <Compile Include="ActivityRepository.cs" />
     <Compile Include="Evaluation.cs" />
+    <Compile Include="EvaluationRepository.cs" />
     <Compile Include="FrmEvaluation.cs">
       <SubType>Form</SubType>
     </Compile>
