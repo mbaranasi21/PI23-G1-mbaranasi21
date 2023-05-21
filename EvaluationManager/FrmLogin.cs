@@ -11,23 +11,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace EvaluationManager {
     public partial class FrmLogin : Form {
-        string username = "nastavnik";
-        string password = "test";
+        public static Teacher LoggedTeacher { get; set; }
         public FrmLogin() {
             InitializeComponent();
         }
 
         private void btnPrijava_Click(object sender, EventArgs e) {
-            if(txtUsername.Text == "" && txtPassword.Text == "") {
-                MessageBox.Show("Korisničko ime i lozinka nisu uneseni!", "Problem", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if(txtUsername.Text == "") {
-                MessageBox.Show("Korisničko ime nije uneseno!", "Problem", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if(txtPassword.Text == "") {
-                MessageBox.Show("Lozinka nije unesena!", "Problem", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else {
-                if (txtUsername.Text == username && txtPassword.Text == password) {
+            LoggedTeacher = TeacherRepository.GetTeacher(txtUsername.Text);
+            if (LoggedTeacher != null && LoggedTeacher.Password == txtPassword.Text) {
                     FrmStudents frmStudents = new FrmStudents();
                     Hide();
                     frmStudents.ShowDialog();
@@ -40,4 +31,3 @@ namespace EvaluationManager {
         }
 
     }
-}
