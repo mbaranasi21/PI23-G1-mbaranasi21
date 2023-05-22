@@ -109,6 +109,7 @@
             this.cboActivities.Name = "cboActivities";
             this.cboActivities.Size = new System.Drawing.Size(160, 24);
             this.cboActivities.TabIndex = 6;
+            this.cboActivities.SelectedIndexChanged += new System.EventHandler(this.cboActivities_SelectedIndexChanged);
             // 
             // txtMinForSignature
             // 

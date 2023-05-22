@@ -26,6 +26,18 @@ namespace EvaluationManager {
         private void SetFormText() {
             Text = student.FirstName + " " + student.LastName;
         }
+        private void btnCancel_Click(object sender, EventArgs e) {
+            Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e) {
+            var activity = cboActivities.SelectedItem as Activity;
+            var teacher = FrmLogin.LoggedTeacher;
+            int points = (int)numPoints.Value;
+            teacher.PerformEvaluation(student, activity, points);
+            Close();
+        }
+
         private void cboActivities_SelectedIndexChanged(object sender, EventArgs e) {
             var currentActivity = cboActivities.SelectedItem as Activity;
             txtActivityDescription.Text = currentActivity.Description;
@@ -46,18 +58,6 @@ namespace EvaluationManager {
                 txtEvaluationDate.Text = "-";
                 numPoints.Value = 0;
             }
-
-        }
-        private void btnCancel_Click(object sender, EventArgs e) {
-            Close();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e) {
-            var activity = cboActivities.SelectedItem as Activity;
-            var teacher = FrmLogin.LoggedTeacher;
-            int points = (int)numPoints.Value;
-            teacher.PerformEvaluation(student, activity, points);
-            Close();
         }
     }
 }
